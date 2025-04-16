@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица с кнопками</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+           
+            background-image: url('https://sun9-79.userapi.com/impg/VEKQ9iWCVKD7z7ffYvdR7_-MZ0UO3D7dquadeA/xmoboJdZ2pw.jpg?size=1251x718&quality=95&sign=1b0ec97a00463b158411df6edb6e8861&type=album');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .text-box {
+            position: absolute;
+            background-color: lightgray;
+            border: 2px solid black;
+            padding: 10px;
+            transition: left 0.3s ease, top 0.3s ease;
+        }
+        .hidden {
+            display: none;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 24px;
+            color: rgb(254, 254, 254);
+        }
+        button {
+            background-color: #007BFF;
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        .image-box {
+            margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+
+<h2>Заболотный гей?</h2>
+<table>
+    <tr>
+        <th>Ответ</th>
+    </tr>
+    <tr>
+        <td>
+            <button id="yes-button">Да</button>
+            <span id="no-text" class="text-box">Нет</span>
+        </td>
+    </tr>
+</table>
+
+<div id="question-table" class="hidden">
+    <h2>Любишь трусы с слоником?</h2>
+    <table>
+        <tr>
+            <th>Ответ</th>
+        </tr>
+        <tr>
+            <td><button id="yes-tasty-button">Да</button></td>
+        </tr>
+    </table>
+    <div id="image-box" class="hidden image-box">
+       
+        <img src="https://sun9-38.userapi.com/impg/1-IRC9vY2oMu0eCl_Rb5RVO3drsELlHs1dAfng/hNo3Rstqp4A.jpg?size=962x1280&quality=95&sign=f4a1e4886cdfb0f7379328a4848667bf&type=album" alt="Трусы с слоником" style="max-width: 300px; max-height: 300px;">
+    </div>
+</div>
+
+<div id="final-message" class="hidden message">PRESS F ZБОЛОТНЫЙ</div>
+
+<script>
+    const noText = document.getElementById('no-text');
+    const questionTable = document.getElementById('question-table');
+    const yesButton = document.getElementById('yes-button');
+    const finalMessage = document.getElementById('final-message');
+    const imageBox = document.getElementById('image-box');
+
+    function moveNoText() {
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const rect = noText.getBoundingClientRect();
+        
+        let newLeft = Math.random() * (windowWidth - rect.width);
+        let newTop = Math.random() * (windowHeight - rect.height);
+
+        noText.style.left = newLeft + 'px';
+        noText.style.top = newTop + 'px';
+    }
+
+    noText.addEventListener('mouseover', moveNoText);
+    moveNoText();
+
+    yesButton.addEventListener('click', function() {
+        questionTable.classList.remove('hidden');
+    });
+    document.getElementById('yes-tasty-button').addEventListener('click', function() {
+        imageBox.classList.remove('hidden'); 
+        finalMessage.classList.remove('hidden'); 
+    });
+</script>
+
+</body>
+</html>
